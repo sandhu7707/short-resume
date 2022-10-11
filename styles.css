@@ -1,25 +1,18 @@
 :root {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Merienda', cursive;
 }
 
 .introduction {
     grid-row: 1;
     grid-column: 2;
-    display: grid;
-}
-
-#prabhjot-singh {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#prabhjot-singh h2 {
-    width: 100%;
-}
-
 .introduction h2 {
     margin-top: 0;
+    width: 100%;
 }
 
 body {
@@ -39,7 +32,7 @@ main{
     grid-column: 2;
     display: grid;
     grid-auto-flow: column;
-    column-gap: 20px;
+    grid-auto-columns: 1fr;
 }
 
 main ul li{
@@ -47,24 +40,49 @@ main ul li{
     margin-bottom: 1.5em;
 }
 
+
+.collapsible-section{
+    padding: 20px;
+    transition: .5s; 
+}
+
+.collapsible-section * {
+    transition: inherit;
+}
+
+main:not(:hover){
+    transition: 0s;
+    transition-property: font-size;
+}
+
 main:hover .collapsible-section:not(:hover):not(:target){
-    visibility: collapse;
+    font-size: 0;
+    /* visibility: collapse; */
     width: 0;
-}
-
-.collapsible-section:where(:hover,:target) {
-    /* width: 90vw; */
-    text-align: center;
-}
-
-.collapsible-content{
-    text-align: left;
+    padding: 0;
+    transition: .25s;
 }
 
 .collapsible-section:not(:hover):not(:target)  .collapsible-content:not(:hover):not(:target) {
     visibility: collapse;
+    font-size: 0;
     height: 0;
     width: 0;
+    transition: .25s;
+    transition-property: width, height;
+}
+
+.collapsible-section:where(:hover,:target) {
+    /* font-size: inherit; */
+    text-align: center;
+    width: 55vw;
+    transition: .25s;
+}
+
+.collapsible-content{
+    text-align: center;
+    transition: .25s;
+    transition-property: font-size;
 }
 
 #contact-me {
@@ -92,17 +110,32 @@ main:hover .collapsible-section:not(:hover):not(:target){
 #contact-me :is(textarea, input) {
     flex-grow: 1;
     margin-right: 15px;
+    border: solid 1px #00000047;
+    border-radius: 5px;
 }
 
 #contact-me label {
     width: 4em;
 }
 
+.button-container{
+    height: 40px;
+    width: 40px;;
+}
+
 button {
     width: 30px;
     height: 30px;
-    border: 0px;
+    border: solid 1px #00000047;
+    border-radius: 5px;
     background-image: url("contact-button.png");
     background-size: contain;
     cursor: pointer;
+    transition: .5s;
+}
+
+button:hover {
+    width: 40px;
+    height: 40px;
+    transition: .5s;
 }
